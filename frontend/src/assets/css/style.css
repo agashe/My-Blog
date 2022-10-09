@@ -1,0 +1,25 @@
+/**
+ * Define Custom Style
+ */
+
+:root {
+  --brand-color: #fcdc03;
+}
+
+.main-container {
+  background-color: #000000 !important;
+  border-top: 3px solid var(--brand-color) !important;
+  border-bottom: 3px solid var(--brand-color) !important;
+  color: #ffffff !important;
+}
+
+.main-color {
+  color: var(--brand-color);
+}
+
+.logo {
+  font-family: Gill Sans, Gill Sans MT, Calibri, sans-serif;
+  text-shadow: 3px 0 0 #fcdc03, -3px 0 0 #fcdc03, 0 3px 0 #fcdc03,
+    0 -3px 0 #fcdc03, 2px 2px #fcdc03, -2px -2px 0 #fcdc03, 2px -2px 0 #fcdc03,
+    -2px 2px 0 #fcdc03;
+}
