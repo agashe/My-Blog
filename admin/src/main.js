@@ -12,6 +12,7 @@
 
  */
 import Vue from "vue";
+import Vuex from "vuex";
 import VueRouter from "vue-router";
 import RouterPrefetch from 'vue-router-prefetch'
 import App from "./App";
@@ -21,16 +22,22 @@ import CKEditor from '@ckeditor/ckeditor5-vue2';
 
 import BlackDashboard from "./plugins/blackDashboard";
 import i18n from "./i18n"
+import store from './store/index';
+import axios from 'axios';
 import './registerServiceWorker'
+
+axios.defaults.withCredentials = false;
+axios.defaults.baseURL = 'http://localhost:3000/api/v1/';
 
 Vue.use(BlackDashboard);
 Vue.use(VueRouter);
 Vue.use(RouterPrefetch);
 Vue.use(CKEditor);
+Vue.use(Vuex);
 
-/* eslint-disable no-new */
 new Vue({
   router,
+  store,
   i18n,
   render: h => h(App)
 }).$mount("#app");

@@ -5,7 +5,7 @@
         <card type="chart">
           <template slot="header">
             <h5 class="card-category">{{$t('sidebar.articles')}}</h5>
-            <h3 class="card-title"><i class="tim-icons icon-single-copy-04 text-success"></i> 15</h3>
+            <h3 class="card-title"><i class="tim-icons icon-single-copy-04 text-success"></i> {{ foo }}</h3>
           </template>
         </card>
       </div>
@@ -30,6 +30,11 @@
 </template>
 <script>
   export default {
+    data() {
+      return {
+        foo: this.$store.getters.StateAccessToken
+      }
+    },
     mounted() {
       this.i18n = this.$i18n;
       if (this.enableRTL) {

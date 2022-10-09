@@ -14,19 +14,19 @@
 
             <div class="row">
               <div class="col-md-12 pl-pr-md-1">
-                <base-input label="Email" type="text" placeholder="Email">
+                <base-input label="Email" type="text" v-model="email" placeholder="Email">
                 </base-input>
               </div>
             </div>
 
             <div class="row">
               <div class="col-md-12 pl-pr-md-1">
-                <base-input label="Password" type="password" placeholder="Password">
+                <base-input label="Password" type="password" v-model="password" placeholder="Password">
                 </base-input>
               </div>
             </div>
 
-            <base-button class="w-100" slot="footer" type="brand" fill>Save</base-button>
+            <base-button class="w-100" slot="footer" type="brand" fill @click="submitLogin">Save</base-button>
           </card>
 
           <div class="col-md-12 text-center mt-5 text-black">
@@ -39,17 +39,32 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
-      year: new Date().getFullYear()
+      year: new Date().getFullYear(),
+      email: "",
+      password: "",
     }
   },
-  props: {
-    model: {
-      type: Object,
-      default: () => {
-        return {};
+  methods: {
+    submitLogin: async function (e) {
+      e.preventDefault();
+
+      try {
+        const response = await axios.post('auth/login', {
+          username: this.email,
+          password: this.password,
+        });
+
+        this.$store.commit('setUser', response.data.id);
+        this.$store.commit('setAccessToken', response.data.access_token);
+
+        this.$router.push("/dashboard");
+      } catch (error) {
+        console.log(error);
       }
     }
   }
