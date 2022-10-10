@@ -40,7 +40,6 @@
 
 <script>
 import axios from 'axios';
-import NotificationTemplate from '../Notifications/NotificationTemplate';
 
 export default {
   data() {

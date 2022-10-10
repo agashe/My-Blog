@@ -7,32 +7,72 @@
   </div>
 </template>
 <script>
-  import EditProfileForm from './Profile/EditProfileForm';
-  export default {
-    components: {
-      EditProfileForm,
-    },
-    data() {
-      return {
-        model: {
-          company: 'Creative Code Inc.',
-          email: 'mike@email.com',
-          username: 'michael23',
-          firstName: 'Mike',
-          lastName: 'Andrew',
-          address: 'Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09',
-          city: 'Melbourne',
-          country: 'Australia',
-          about: 'Lamborghini Mercy, Your chick she so thirsty, I\'m in that two seat Lambo.'
-        },
-        user: {
-          fullName: 'Mike Andrew',
-          title: 'Ceo/Co-Founder',
-          description: `Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...`,
+import EditProfileForm from './Profile/EditProfileForm';
+import axios from 'axios';
+
+export default {
+  components: {
+    EditProfileForm,
+  },
+  data() {
+    return {
+      model: {
+        linkedin: null,
+        github: null,
+        bio: null,
+      }
+    }
+  },
+  async created() {
+    const response = await axios.get(
+        'users',
+        {
+          headers: {"Authorization" : `Bearer ${this.$store.getters.StateAccessToken}`}
         }
+      );
+
+      this.model.linkedin = response.data.linkedin;
+      this.model.github = response.data.github;
+      this.model.bio = response.data.bio;
+  },
+  methods: {
+    submit: async function () {
+      // e.preventDefault();
+
+      try {
+        const response = await axios.put(
+          `users/${this.$store.getters.StateUser}`,
+          {
+            linkedin: this.model.linkedin,
+            github: this.model.github,
+            bio: this.model.bio,
+          },
+          {
+            headers: {"Authorization" : `Bearer ${this.$store.getters.StateAccessToken}`}
+          }
+        );
+
+        this.$notify({
+          message: "Your profile was updated",
+          icon: "tim-icons icon-bell-55",
+          horizontalAlign: 'right',
+          verticalAlign: 'bottom',
+          type: 'success',
+          timeout: 0
+        });
+      } catch (error) {
+        this.$notify({
+          message: "Error: " + error,
+          icon: "tim-icons icon-bell-55",
+          horizontalAlign: 'right',
+          verticalAlign: 'bottom',
+          type: 'danger',
+          timeout: 0
+        });
       }
     }
   }
+}
 </script>
 <style>
 </style>

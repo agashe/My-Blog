@@ -7,13 +7,13 @@
     <div class="row">
       <div class="col-md-6 pr-md-1">
         <base-input label="LinkedIn"
-                  v-model="model.city"
+                  v-model="model.linkedin"
                   placeholder="LinkedIn">
         </base-input>
       </div>
       <div class="col-md-6 pl-md-1">
         <base-input label="GitHub"
-                  v-model="model.country"
+                  v-model="model.github"
                   placeholder="GitHub">
         </base-input>
       </div>
@@ -21,17 +21,17 @@
     <div class="row">
       <div class="col-md-12">
         <base-input>
-          <label>About Me</label>
+          <label>Bio</label>
           <textarea rows="15" cols="80"
                     class="form-control"
                     placeholder="Here can be your description"
-                    v-model="model.about">
+                    v-model="model.bio">
 
               </textarea>
         </base-input>
       </div>
     </div>
-    <base-button slot="footer" type="brand" fill>Save</base-button>
+    <base-button slot="footer" type="brand" fill @click="submit">Save</base-button>
   </card>
 </template>
 <script>
@@ -42,6 +42,11 @@
         default: () => {
           return {};
         }
+      }
+    },
+    methods: {
+      submit() {
+        this.$parent.submit();
       }
     }
   }
