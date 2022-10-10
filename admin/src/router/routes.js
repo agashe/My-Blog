@@ -27,11 +27,20 @@ const ProjectsEdit = () => import("@/pages/Projects/EditProject.vue");
 
 const Settings = () => import("@/pages/Settings.vue");
 
+import store from '../store/index';
+
 const routes = [
   {
     path: "/",
     component: DashboardLayout,
     redirect: "/dashboard",
+    beforeEnter(to, from, next) {
+      if (!store.getters.isAuthenticated && to.name !== 'login') {
+        next('login');
+      }
+
+      next();
+    },
     children: [
       {
         path: "dashboard",

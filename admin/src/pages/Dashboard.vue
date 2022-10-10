@@ -5,7 +5,7 @@
         <card type="chart">
           <template slot="header">
             <h5 class="card-category">{{$t('sidebar.articles')}}</h5>
-            <h3 class="card-title"><i class="tim-icons icon-single-copy-04 text-success"></i> {{ foo }}</h3>
+            <h3 class="card-title"><i class="tim-icons icon-single-copy-04 text-success"></i> {{ articles }}</h3>
           </template>
         </card>
       </div>
@@ -13,7 +13,7 @@
         <card type="chart">
           <template slot="header">
             <h5 class="card-category">{{$t('sidebar.books')}}</h5>
-            <h3 class="card-title"><i class="tim-icons icon-book-bookmark text-info"></i> 20</h3>
+            <h3 class="card-title"><i class="tim-icons icon-book-bookmark text-info"></i> {{ books }}</h3>
           </template>
         </card>
       </div>
@@ -21,7 +21,7 @@
         <card type="chart">
           <template slot="header">
             <h5 class="card-category">{{$t('sidebar.projects')}}</h5>
-            <h3 class="card-title"><i class="tim-icons icon-components text-danger"></i> 6</h3>
+            <h3 class="card-title"><i class="tim-icons icon-components text-danger"></i> {{ projects }}</h3>
           </template>
         </card>
       </div>
@@ -32,7 +32,9 @@
   export default {
     data() {
       return {
-        foo: this.$store.getters.StateAccessToken
+        articles: 0,
+        books: 0,
+        projects: 0,
       }
     },
     mounted() {

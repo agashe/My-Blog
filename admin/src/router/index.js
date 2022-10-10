@@ -3,7 +3,7 @@ import routes from "./routes";
 
 // configure router
 const router = new VueRouter({
-  routes, // short for routes: routes
+  routes,
   linkExactActiveClass: "active",
   scrollBehavior: (to) => {
     if (to.hash) {
@@ -11,7 +11,8 @@ const router = new VueRouter({
     } else {
       return { x: 0, y: 0 }
     }
-  }
+  },
+
 });
 
 export default router;

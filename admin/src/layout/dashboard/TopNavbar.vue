@@ -28,10 +28,10 @@
                            menu-classes="dropdown-navbar dropdown-black">
               <a slot="title" class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="true">
                 <div class="photo">
-                  <img src="img/anime3.png">
+                  <img src="img/avatar.jpg">
                 </div>
                 <b class="caret d-none d-lg-block d-xl-block"></b>
-                <p class="d-lg-none">
+                <p class="d-lg-none" @click="logout">
                   Log out
                 </p>
               </a>
@@ -43,10 +43,10 @@
               </li>
               <div class="dropdown-divider"></div>
               <li class="nav-link">
-                <a href="#" class="nav-item dropdown-item">
+                <button class="nav-item dropdown-item" @click="logout">
                   <i class="tim-icons icon-user-run"></i>
                   Log out
-                </a>
+                </button>
               </li>
             </base-dropdown>
           </ul>
@@ -99,6 +99,10 @@
       },
       toggleMenu() {
         this.showMenu = !this.showMenu;
+      },
+      logout() {
+        this.$store.commit('logOut');
+        this.$router.push('/login');
       }
     }
   };
