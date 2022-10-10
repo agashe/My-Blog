@@ -40,6 +40,7 @@
 
 <script>
 import axios from 'axios';
+import NotificationTemplate from '../Notifications/NotificationTemplate';
 
 export default {
   data() {
@@ -64,7 +65,14 @@ export default {
 
         this.$router.push("/dashboard");
       } catch (error) {
-        console.log(error);
+        this.$notify({
+          message: "Invalid Credentials",
+          icon: "tim-icons icon-bell-55",
+          horizontalAlign: 'right',
+          verticalAlign: 'bottom',
+          type: 'danger',
+          timeout: 0
+        });
       }
     }
   }
