@@ -18,31 +18,30 @@
 </template>
 
 <style>
-  .btn-brand {
-    background: #fcdc03;
-    color: #000000;
-  }
-  .btn-brand:hover {
-    background: #fcdc03 !important;
-  }
+.btn-brand {
+  background: #fcdc03;
+  color: #000000;
+}
+.btn-brand:hover {
+  background: #fcdc03 !important;
+}
 </style>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   data() {
     return {
       putSiteInMaintenance: null,
-    }
+    };
   },
   async created() {
-    const response = await axios.get(
-      'settings',
-      {
-        headers: {"Authorization" : `Bearer ${this.$store.getters.StateAccessToken}`}
-      }
-    );
+    const response = await axios.get("settings", {
+      headers: {
+        Authorization: `Bearer ${this.$store.getters.StateAccessToken}`,
+      },
+    });
 
     this.putSiteInMaintenance = response.data[0].putSiteInMaintenance;
   },
@@ -52,36 +51,37 @@ export default {
 
       try {
         const response = await axios.put(
-          'settings',
+          "settings",
           {
             putSiteInMaintenance: this.putSiteInMaintenance,
           },
           {
-            headers: {"Authorization" : `Bearer ${this.$store.getters.StateAccessToken}`}
+            headers: {
+              Authorization: `Bearer ${this.$store.getters.StateAccessToken}`,
+            },
           }
         );
 
         this.$notify({
           message: "Settings was updated",
           icon: "tim-icons icon-bell-55",
-          horizontalAlign: 'right',
-          verticalAlign: 'bottom',
-          type: 'success',
-          timeout: 0
+          horizontalAlign: "right",
+          verticalAlign: "bottom",
+          type: "success",
+          timeout: 0,
         });
       } catch (error) {
         this.$notify({
           message: "Error: " + error,
           icon: "tim-icons icon-bell-55",
-          horizontalAlign: 'right',
-          verticalAlign: 'bottom',
-          type: 'danger',
-          timeout: 0
+          horizontalAlign: "right",
+          verticalAlign: "bottom",
+          type: "danger",
+          timeout: 0,
         });
       }
-    }
-  }
-}
+    },
+  },
+};
 </script>
-<style>
-</style>
+<style></style>

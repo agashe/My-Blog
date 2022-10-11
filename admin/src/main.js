@@ -14,20 +14,20 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import VueRouter from "vue-router";
-import RouterPrefetch from 'vue-router-prefetch'
+import RouterPrefetch from "vue-router-prefetch";
 import App from "./App";
 // TIP: change to import router from "./router/starterRouter"; to start with a clean layout
 import router from "./router/index";
-import CKEditor from '@ckeditor/ckeditor5-vue2';
+import CKEditor from "@ckeditor/ckeditor5-vue2";
 
 import BlackDashboard from "./plugins/blackDashboard";
-import i18n from "./i18n"
-import store from './store/index';
-import axios from 'axios';
-import './registerServiceWorker'
+import i18n from "./i18n";
+import store from "./store/index";
+import axios from "axios";
+import "./registerServiceWorker";
 
 axios.defaults.withCredentials = false;
-axios.defaults.baseURL = 'http://localhost:3000/api/v1/';
+axios.defaults.baseURL = "http://localhost:3000/api/v1/";
 
 Vue.use(BlackDashboard);
 Vue.use(VueRouter);
@@ -39,5 +39,5 @@ new Vue({
   router,
   store,
   i18n,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

@@ -27,7 +27,7 @@ const ProjectsEdit = () => import("@/pages/Projects/EditProject.vue");
 
 const Settings = () => import("@/pages/Settings.vue");
 
-import store from '../store/index';
+import store from "../store/index";
 import axios from "axios";
 
 const routes = [
@@ -36,34 +36,33 @@ const routes = [
     component: DashboardLayout,
     redirect: "/dashboard",
     beforeEnter(to, from, next) {
-      if (!store.getters.isAuthenticated && to.name !== 'login') {
-        next('login');
-      }
-      else if (store.getters.isAuthenticated) {
-        axios.get(
-          'dashboard',
-          {
-            headers: {"Authorization" : `Bearer ${store.getters.StateAccessToken}`}
-          }
-        )
-        .then(function() {
-          next();
-        })
-        .catch(function() {
-          next('login');
-        })
+      if (!store.getters.isAuthenticated && to.name !== "login") {
+        next("login");
+      } else if (store.getters.isAuthenticated) {
+        axios
+          .get("dashboard", {
+            headers: {
+              Authorization: `Bearer ${store.getters.StateAccessToken}`,
+            },
+          })
+          .then(function () {
+            next();
+          })
+          .catch(function () {
+            next("login");
+          });
       }
     },
     children: [
       {
         path: "dashboard",
         name: "dashboard",
-        component: Dashboard
+        component: Dashboard,
       },
       {
         path: "profile",
         name: "profile",
-        component: Profile
+        component: Profile,
       },
       {
         path: "articles",
@@ -73,12 +72,12 @@ const routes = [
       {
         path: "articles/create",
         name: "articles.create",
-        component: ArticlesCreate
+        component: ArticlesCreate,
       },
       {
         path: "articles/edit/:id",
         name: "articles.edit",
-        component: ArticlesEdit
+        component: ArticlesEdit,
       },
       {
         path: "books",
@@ -88,12 +87,12 @@ const routes = [
       {
         path: "books/create",
         name: "books.create",
-        component: BooksCreate
+        component: BooksCreate,
       },
       {
         path: "books/edit/:id",
         name: "books.edit",
-        component: BooksEdit
+        component: BooksEdit,
       },
       {
         path: "projects",
@@ -103,28 +102,28 @@ const routes = [
       {
         path: "projects/create",
         name: "projects.create",
-        component: ProjectsCreate
+        component: ProjectsCreate,
       },
       {
         path: "projects/edit/:id",
         name: "projects.edit",
-        component: ProjectsEdit
+        component: ProjectsEdit,
       },
       {
         path: "settings",
         name: "settings",
-        component: Settings
+        component: Settings,
       },
     ],
   },
   {
     path: "/login",
     name: "login",
-    component: Login
+    component: Login,
   },
   {
     path: "*",
-    component: NotFound
+    component: NotFound,
   },
 ];
 

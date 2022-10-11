@@ -10,7 +10,8 @@
     "e2e": "node test/e2e/runner.js",
     "lint": "vue-cli-service lint",
     "dev": "vue-cli-service serve --open",
-    "lint-fix": "vue-cli-service lint --fix"
+    "lint-fix": "vue-cli-service lint --fix",
+    "format": "npx prettier --write ."
   },
   "dependencies": {
     "@ckeditor/ckeditor5-build-classic": "^35.1.0",
@@ -33,6 +34,7 @@
     "@vue/cli-plugin-pwa": "^4.4.6",
     "@vue/cli-service": "^4.4.6",
     "node-sass": "^4.14.1",
+    "prettier": "^2.7.1",
     "sass-loader": "^8.0.2",
     "vue-cli-plugin-i18n": "^1.0.1",
     "vue-template-compiler": "^2.6.11"
