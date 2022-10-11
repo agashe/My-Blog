@@ -26,7 +26,7 @@
               </div>
             </div>
 
-            <base-button class="w-100" slot="footer" type="brand" fill @click="submitLogin">Save</base-button>
+            <base-button class="w-100" slot="footer" type="brand" fill @click="submitLogin">Login</base-button>
           </card>
 
           <div class="col-md-12 text-center mt-5 text-black">

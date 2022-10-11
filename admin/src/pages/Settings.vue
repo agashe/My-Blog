@@ -38,13 +38,13 @@ export default {
   },
   async created() {
     const response = await axios.get(
-        'settings',
-        {
-          headers: {"Authorization" : `Bearer ${this.$store.getters.StateAccessToken}`}
-        }
-      );
+      'settings',
+      {
+        headers: {"Authorization" : `Bearer ${this.$store.getters.StateAccessToken}`}
+      }
+    );
 
-      this.putSiteInMaintenance = response.data[0].putSiteInMaintenance;
+    this.putSiteInMaintenance = response.data[0].putSiteInMaintenance;
   },
   methods: {
     submit: async function (e) {

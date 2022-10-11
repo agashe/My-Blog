@@ -37,8 +37,6 @@ export default {
   },
   methods: {
     submit: async function () {
-      // e.preventDefault();
-
       try {
         const response = await axios.put(
           `users/${this.$store.getters.StateUser}`,

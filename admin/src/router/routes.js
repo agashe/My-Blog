@@ -28,6 +28,7 @@ const ProjectsEdit = () => import("@/pages/Projects/EditProject.vue");
 const Settings = () => import("@/pages/Settings.vue");
 
 import store from '../store/index';
+import axios from "axios";
 
 const routes = [
   {
@@ -38,8 +39,20 @@ const routes = [
       if (!store.getters.isAuthenticated && to.name !== 'login') {
         next('login');
       }
-
-      next();
+      else if (store.getters.isAuthenticated) {
+        axios.get(
+          'dashboard',
+          {
+            headers: {"Authorization" : `Bearer ${store.getters.StateAccessToken}`}
+          }
+        )
+        .then(function() {
+          next();
+        })
+        .catch(function() {
+          next('login');
+        })
+      }
     },
     children: [
       {
