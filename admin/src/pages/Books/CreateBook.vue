@@ -7,34 +7,85 @@
 
     <div class="row">
       <div class="col-md-12 pl-pr-md-1">
-        <base-input label="Title" type="text" placeholder="Title"> </base-input>
+        <base-input label="Title" type="text" placeholder="Title" v-model="title"> </base-input>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12 pl-pr-md-1">
-        <base-input label="Description" type="text" placeholder="Description">
+        <base-input label="Description" type="text" placeholder="Description" v-model="description">
         </base-input>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12 pl-pr-md-1">
-        <base-input label="Cover" type="text" placeholder="Cover"> </base-input>
+        <div class="form-group">
+          <label for="cover" class="control-label">Cover</label>
+          <input
+            type="file"
+            class="form-control"
+            @change="filesChange($event.target.name, $event.target.files)"
+          />
+        </div>
       </div>
     </div>
 
-    <base-button slot="footer" type="brand" fill>Save</base-button>
+    <base-button slot="footer" type="brand" fill @click="submit">Save</base-button>
   </card>
 </template>
 <script>
+import axios from "axios";
+
 export default {
-  props: {
-    model: {
-      type: Object,
-      default: () => {
-        return {};
-      },
+  data() {
+    return {
+      title: null,
+      description: null,
+      cover: null,
+    };
+  },
+  methods: {
+    filesChange(fieldName, fileList) {
+      if (!fileList.length) return;
+      this.cover = fileList[0];
+    },
+    submit: async function (e) {
+      e.preventDefault();
+
+      try {
+        const formData = new FormData();
+        formData.append("title", this.title);
+        formData.append("description", this.description);
+        formData.append("cover", this.cover);
+
+        const response = await axios.post("books", formData, {
+          headers: {
+            Authorization: `Bearer ${this.$store.getters.StateAccessToken}`,
+            "Content-Type": "multipart/form-data",
+          },
+        });
+
+        this.$notify({
+          message: "Book was created",
+          icon: "tim-icons icon-bell-55",
+          horizontalAlign: "right",
+          verticalAlign: "bottom",
+          type: "success",
+          timeout: 0,
+        });
+
+        this.$router.push("/books");
+      } catch (error) {
+        this.$notify({
+          message: "Error: " + error,
+          icon: "tim-icons icon-bell-55",
+          horizontalAlign: "right",
+          verticalAlign: "bottom",
+          type: "danger",
+          timeout: 0,
+        });
+      }
     },
   },
 };
