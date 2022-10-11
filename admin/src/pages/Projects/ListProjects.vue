@@ -31,13 +31,29 @@
                 <td>{{ project.title }}</td>
                 <td>{{ project.createdAt }}</td>
                 <td>
-                  <a :href="project.repository" class="btn mx-1 btn-icon btn-fab btn-info" target="_blank">
+                  <a
+                    :href="project.repository"
+                    class="btn mx-1 btn-icon btn-fab btn-info"
+                    target="_blank"
+                  >
                     <i class="tim-icons icon-link-72"></i>
                   </a>
-                  <base-button type="success" icon title="Edit" class="mx-1" @click="editProject(project._id)">
+                  <base-button
+                    type="success"
+                    icon
+                    title="Edit"
+                    class="mx-1"
+                    @click="editProject(project._id)"
+                  >
                     <i class="tim-icons icon-pencil"></i>
                   </base-button>
-                  <base-button type="danger" icon title="Delete" class="mx-1" @click="deleteProject(project._id, index)">
+                  <base-button
+                    type="danger"
+                    icon
+                    title="Delete"
+                    class="mx-1"
+                    @click="deleteProject(project._id, index)"
+                  >
                     <i class="tim-icons icon-trash-simple"></i>
                   </base-button>
                 </td>

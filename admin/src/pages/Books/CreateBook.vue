@@ -7,13 +7,24 @@
 
     <div class="row">
       <div class="col-md-12 pl-pr-md-1">
-        <base-input label="Title" type="text" placeholder="Title" v-model="title"> </base-input>
+        <base-input
+          label="Title"
+          type="text"
+          placeholder="Title"
+          v-model="title"
+        >
+        </base-input>
       </div>
     </div>
 
     <div class="row">
       <div class="col-md-12 pl-pr-md-1">
-        <base-input label="Description" type="text" placeholder="Description" v-model="description">
+        <base-input
+          label="Description"
+          type="text"
+          placeholder="Description"
+          v-model="description"
+        >
         </base-input>
       </div>
     </div>
@@ -31,7 +42,9 @@
       </div>
     </div>
 
-    <base-button slot="footer" type="brand" fill @click="submit">Save</base-button>
+    <base-button slot="footer" type="brand" fill @click="submit"
+      >Save</base-button
+    >
   </card>
 </template>
 <script>

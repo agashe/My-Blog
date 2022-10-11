@@ -7,18 +7,34 @@
 
     <div class="row">
       <div class="col-md-12 pl-pr-md-1">
-        <base-input label="Title" type="text" placeholder="Title" v-model="title"> </base-input>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 pl-pr-md-1">
-        <base-input label="Description" type="text" placeholder="Description" v-model="description">
+        <base-input
+          label="Title"
+          type="text"
+          placeholder="Title"
+          v-model="title"
+        >
         </base-input>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12 pl-pr-md-1">
-        <base-input label="Keywords" type="text" placeholder="Keywords" v-model="keywords">
+        <base-input
+          label="Description"
+          type="text"
+          placeholder="Description"
+          v-model="description"
+        >
+        </base-input>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 pl-pr-md-1">
+        <base-input
+          label="Keywords"
+          type="text"
+          placeholder="Keywords"
+          v-model="keywords"
+        >
         </base-input>
       </div>
     </div>
@@ -26,7 +42,11 @@
       <div class="col-md-12 pl-pr-md-1">
         <div class="form-group">
           <label for="cover" class="control-label">Cover</label>
-          <input type="file" class="form-control" @change="filesChange($event.target.name, $event.target.files)" />
+          <input
+            type="file"
+            class="form-control"
+            @change="filesChange($event.target.name, $event.target.files)"
+          />
         </div>
       </div>
     </div>
@@ -40,7 +60,9 @@
       </div>
     </div>
 
-    <base-button slot="footer" type="brand" fill @click="submit">Save</base-button>
+    <base-button slot="footer" type="brand" fill @click="submit"
+      >Save</base-button
+    >
   </card>
 </template>
 <script>
@@ -66,7 +88,7 @@ export default {
     });
 
     let articleId = this.$route.params.id;
-    const article = response.data.find(article => article._id == articleId);
+    const article = response.data.find((article) => article._id == articleId);
 
     this.title = article.title;
     this.description = article.description;
@@ -89,12 +111,16 @@ export default {
         formData.append("cover", this.cover);
         formData.append("body", this.body);
 
-        const response = await axios.put("articles/" + this.$route.params.id, formData, {
-          headers: {
-            Authorization: `Bearer ${this.$store.getters.StateAccessToken}`,
-            "Content-Type": "multipart/form-data",
-          },
-        });
+        const response = await axios.put(
+          "articles/" + this.$route.params.id,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${this.$store.getters.StateAccessToken}`,
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
 
         this.$notify({
           message: "Article was updated",

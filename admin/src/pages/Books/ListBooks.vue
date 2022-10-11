@@ -33,10 +33,22 @@
                 <td>{{ book.createdAt }}</td>
                 <!-- <td>500</td> -->
                 <td>
-                  <base-button type="success" icon title="Edit" class="mx-1" @click="editBook(book._id)">
+                  <base-button
+                    type="success"
+                    icon
+                    title="Edit"
+                    class="mx-1"
+                    @click="editBook(book._id)"
+                  >
                     <i class="tim-icons icon-pencil"></i>
                   </base-button>
-                  <base-button type="danger" icon title="Delete" class="mx-1" @click="deleteBook(book._id, index)">
+                  <base-button
+                    type="danger"
+                    icon
+                    title="Delete"
+                    class="mx-1"
+                    @click="deleteBook(book._id, index)"
+                  >
                     <i class="tim-icons icon-trash-simple"></i>
                   </base-button>
                 </td>
