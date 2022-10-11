@@ -51,8 +51,8 @@ export default {
     let bookId = this.$route.params.id;
     const book = response.data.find(book => book._id == bookId);
 
-    this.title = response.data[0].title;
-    this.description = response.data[0].description;
+    this.title = book.title;
+    this.description = book.description;
   },
   methods: {
     filesChange(fieldName, fileList) {

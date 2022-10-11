@@ -68,10 +68,10 @@ export default {
     let articleId = this.$route.params.id;
     const article = response.data.find(article => article._id == articleId);
 
-    this.title = response.data[0].title;
-    this.description = response.data[0].description;
-    this.keywords = response.data[0].keywords;
-    this.body = response.data[0].editorData;
+    this.title = article.title;
+    this.description = article.description;
+    this.keywords = article.keywords;
+    this.body = article.editorData;
   },
   methods: {
     filesChange(fieldName, fileList) {
