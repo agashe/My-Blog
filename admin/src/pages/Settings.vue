@@ -25,6 +25,12 @@
 .btn-brand:hover {
   background: #fcdc03 !important;
 }
+.btn-brand:active {
+  background: #fcdc03 !important;
+}
+.btn-brand:focus {
+  background: #fcdc03 !important;
+}
 </style>
 
 <script>

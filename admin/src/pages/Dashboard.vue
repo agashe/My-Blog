@@ -17,7 +17,8 @@
           <template slot="header">
             <h5 class="card-category">{{ $t("sidebar.books") }}</h5>
             <h3 class="card-title">
-              <i class="tim-icons icon-book-bookmark text-info"></i> {{ books }}
+              <i class="tim-icons icon-book-bookmark text-info"></i>
+              {{ books }}
             </h3>
           </template>
         </card>
@@ -37,6 +38,8 @@
   </div>
 </template>
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -44,6 +47,17 @@ export default {
       books: 0,
       projects: 0,
     };
+  },
+  async created() {
+    const response = await axios.get("dashboard", {
+      headers: {
+        Authorization: `Bearer ${this.$store.getters.StateAccessToken}`,
+      },
+    });
+
+    this.articles = response.data.articlesCount;
+    this.books = response.data.booksCount;
+    this.projects = response.data.projectsCount;
   },
   mounted() {
     this.i18n = this.$i18n;

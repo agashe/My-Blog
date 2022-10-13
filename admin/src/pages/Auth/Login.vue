@@ -129,6 +129,9 @@ export default {
 .btn-brand:hover {
   background: #fcdc03 !important;
 }
+.btn-brand:active {
+  background: #fcdc03 !important;
+}
 
 .text-black {
   color: #000000;

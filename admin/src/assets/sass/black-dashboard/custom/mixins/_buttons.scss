@@ -121,13 +121,13 @@
     }
 
     &.btn-default {
-      color: $default;
+      color: $brand;
 
       &:hover,
       &:focus,
       &:active,
       &:active:focus {
-        color: $default-states;
+        color: $brand;
       }
     }
 
