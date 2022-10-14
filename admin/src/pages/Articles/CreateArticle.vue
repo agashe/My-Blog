@@ -112,7 +112,7 @@ export default {
         formData.append("description", this.description);
         formData.append("keywords", this.keywords);
         formData.append("cover", this.cover);
-        formData.append("body", this.body);
+        formData.append("body", this.editorData);
 
         const response = await axios.post("articles", formData, {
           headers: {
