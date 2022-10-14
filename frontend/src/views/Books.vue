@@ -5,7 +5,7 @@
         <div>
           <div>
             <v-row>
-              <v-col cols="12" md="6" lg="4" v-for="i in 18" :key="i">
+              <v-col cols="12" md="6" lg="4" v-for="(book, index) in books" :key="index">
                 <div>
                   <v-card class="my-3 pa-2" to="/article">
                     <v-row>
@@ -16,12 +16,11 @@
                       <v-col>
                         <v-card-text class="pa-0">
                           <div class="text-h6 font-weight-bold primary--text">
-                            How to write an awesome blog post in 5 steps
+                            {{ book.title }}
                           </div>
 
                           <div class="text-body-1">
-                            Ultrices sagittis orci a scelerisque. Massa placerat
-                            duis ultricies lacus sed turpis
+                            {{ book.description }}
                           </div>
                         </v-card-text>
                       </v-col>
@@ -61,7 +60,18 @@
 </style>
 
 <script>
+import axios from 'axios';
+
 export default {
-  name: "Books"
+  name: "Books",
+  data() {
+    return {
+      books: null
+    }
+  },
+  async created() {
+    const response = await axios.get("blog/books");
+    this.books = response.data;
+  },
 };
 </script>

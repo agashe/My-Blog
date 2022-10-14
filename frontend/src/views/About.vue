@@ -10,24 +10,20 @@
 
             <v-row>
               <v-col cols="12" md="8" class="mx-auto text-center">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit 
-                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                {{ bio }}
               </v-col>
             </v-row>
 
             <v-row>
               <v-col>
                 <div class="text-h5 text-center">
-                  <v-btn icon large>
+                  <a :href="linkedin" target="_blank">
                     <v-icon large color="primary">mdi-linkedin</v-icon>
-                  </v-btn>
+                  </a>
 
-                  <v-btn icon large>
+                  <a :href="github" target="_blank">
                     <v-icon large color="primary">mdi-github</v-icon>
-                  </v-btn>
+                  </a>
                 </div>
               </v-col>
             </v-row>
@@ -38,12 +34,6 @@
   </div>
 </template> 
 
-<script>
-export default {
-  name: "About"
-};
-</script>
-
 <style lang="scss" scoped>
 .authors {
   position: relative;
@@ -51,3 +41,24 @@ export default {
   margin-bottom: -50px;
 }
 </style>
+
+<script>
+import axios from 'axios';
+
+export default {
+  name: "About",
+  data() {
+    return {
+      bio: null,
+      linkedin: null,
+      github: null,
+    }
+  },
+  async created() {
+    const response = await axios.get("blog/about");
+    this.bio = response.data.bio;
+    this.linkedin = response.data.linkedin;
+    this.github = response.data.github;
+  },
+};
+</script>

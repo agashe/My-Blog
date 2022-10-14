@@ -5,38 +5,37 @@
         <div>
           <div class="pt-5">
             <div>
-              <v-row v-for="i in 6" :key="i" class="py-4">
+              <v-row v-for="(article, index) in articles" :key="index" class="py-4">
                 <v-col>
-                  <v-row class="cursor-pointer" @click="redirectToArticle(1)">
+                  <v-row class="cursor-pointer" @click="redirectToArticle(article.title.replace(/ /g, '_'))">
                     <v-col cols="12" md="4">
                       <v-card flat height="100%">
-                        <v-img
-                          src="https://cdn.pixabay.com/photo/2021/01/27/06/54/nova-scotia-duck-tolling-retriever-5953883_1280.jpg"
-                          :aspect-ratio="16 / 9" height="100%"></v-img>
+                        <!-- <v-img
+                          :src="`http://localhost:3000/uploads/articles/${article.cover}`"
+                          :aspect-ratio="16 / 9" height="100%"></v-img> -->
                       </v-card>
                     </v-col>
 
                     <v-col>
                       <div>
                         <h3 class="text-h4 font-weight-bold pt-3">
-                          Ut enim blandit volutpat maecenas volutpat blandit
+                          {{ article.title }}
                         </h3>
 
                         <p class="text-h6 font-weight-regular pt-3 text--secondary">
-                          Duis aute irure dolor in reprehenderit in voluptate velit
-                          esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                          sint occaecat cupidatat non proident, sunt in culpa qui
-                          officia deserunt mollit anim id est laborum.
+                          {{ article.description }}
                         </p>
 
                         <div class="d-flex align-center">
-                          <div class="pl-2">Yan Lee · 03 Jan 2019</div>
+                          <div class="pl-2">{{ article.createdAt ? 
+                            article.createdAt.slice(0, article.createdAt.indexOf('T')) 
+                            : '' }}</div>
                         </div>
                       </div>
                     </v-col>
                   </v-row>
 
-                  <v-row v-if="i != 6">
+                  <v-row v-if="index != (articles.length - 1)">
                     <v-col>
                       <v-divider></v-divider>
                     </v-col>
@@ -58,13 +57,24 @@
 </style>
 
 <script>
+import axios from "axios"
+
 export default {
   name: "Home",
+  data() {
+    return {
+      articles: null
+    }
+  },
+  async created() {
+    const response = await axios.get("blog/articles");
+    this.articles = response.data;
+  },
   methods: {
-    redirectToArticle(id) {
+    redirectToArticle(title) {
       this.$router.push({
         name: 'Article',
-        params: {id: id}
+        params: {title: title}
       });
     }
   },

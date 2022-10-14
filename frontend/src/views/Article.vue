@@ -10,185 +10,30 @@
 
               <v-card-text>
                 <div class="text-h4 font-weight-bold primary--text pt-4 mb-4">
-                  <h4>15 Things | have always wondered about birds</h4>
+                  <h4>{{ article.title }}</h4>
                 </div>
 
                 <div class="d-flex align-center justify-space-between">
                   <div class="d-flex align-center">
                     <v-chip small color="transparent">
-                      <v-icon left>mdi-calendar</v-icon> 22 July 2019
+                      <v-icon left>mdi-calendar</v-icon> 
+                      {{ article.createdAt ? 
+                      article.createdAt.slice(0, article.createdAt.indexOf('T')) 
+                      : '' }}
                     </v-chip>
 
                     <div class="pl-2 text-body-1"></div>
                   </div>
 
-                  <div class="d-flex align-center">
-                    <div>
-                      <v-chip small color="transparent">
-                        <v-icon left>mdi-eye</v-icon>1.4k
-                      </v-chip>
-
-                      <v-chip small color="transparent">
-                        <v-icon left>mdi-comment-outline</v-icon>7 Comment
-                      </v-chip>
-                    </div>
-                  </div>
+                  <div class="d-flex align-center"></div>
                 </div>
 
                 <v-divider class="my-4"></v-divider>
 
                 <div>
                   <p class="text-subtitle-1 primary--text font-weight-medium">
-                    Dignissim cras tincidunt lobortis feugiat vivamus at. Amet luctus venenatis lectus magna fringilla.
-                    Nibh tellus molestie nunc non blandit.
-                    Et magnis dis parturient montes nascetur ridiculus mus mauris vitae. Amet massa vitae tortor
-                    condimentum lacinia quis vel eros. Eros
-                    in cursus turpis massa tincidunt dui ut ornare. Est ante in nibh mauris cursus mattis molestie. Nec
-                    ullamcorper sit amet risus nullam
-                    eget felis eget. Tincidunt praesent semper feugiat nibh sed. Et leo duis ut diam quam nulla pottitor
-                    massa id. Convallis convallis tellus id
-                    interdum velit laoreet id. Enim ut sem viverra aliquet eget sit. Mollis aliquam ut porttitor leo a
-                    diam. Eleifend donec pretium vulputate
-                    sapien nec sagittis aliquam. Velit egestas dui id ornares.
+                    {{ article.body }}
                   </p>
-                </div>
-
-                <div class="py-4">
-                  <v-alert class="font-italic text-h6 text-center" border="left" colored-border color="accent">
-                    Srem Ipsum is simply dummy text of the printing and typesetting industry. Lorem lpsum has been
-                    the industry's standard dummy text ever since the 1500s. Lorem Ipsum is simply .
-                  </v-alert>
-                </div>
-
-                <div class="text-h5 primary--text font-weight-bold">
-                  Ultricies mi quis hendrerit dolor
-                  <p class="text-subtitle-1 primary--text font-weight-medium mt-5">
-                    Quam adipiscing vitae proin sagittis nisl rhoncus. Integer vitae justo eget magna fermentum iaculis
-                    eu non. Vitae congue mauris
-                    rhoncus aenean vel elit. Nibh mauris cursus mattis molestie. Etiam sit amet nisl purus. At auctor
-                    urna nunc id cursus metus. Diam in arcu
-                    cursus euismod quis viverra nibh cras.
-                  </p>
-                </div>
-
-                <div class="my-4">
-                  <v-row>
-                    <v-col cols="6">
-                      <v-card>
-                        <v-img src="https://cdn.pixabay.com/photo/2015/03/26/09/47/sky-690293_1280.jpg"
-                          :aspect-ratio="16 / 9" gradient="to top, rgba(25,32,72,.4), rgba(25,32,72,.0)"></v-img>
-                      </v-card>
-                    </v-col>
-
-                    <v-col cols="6">
-                      <v-card>
-                        <v-img src="https://cdn.pixabay.com/photo/2019/11/01/11/08/landscape-4593909_1280.jpg"
-                          :aspect-ratio="16 / 9" gradient="to top, rgba(25,32,72,.4), rgba(25,32,72,.0)"></v-img>
-                      </v-card>
-                    </v-col>
-                  </v-row>
-                </div>
-
-                <div class="text-h5 primary--text font-weight-bold">
-                  Nibh tellus molestie nunc non blandit massa enim
-                  <div class="text-subtitle-1 primary--text font-weight-medium mt-5">
-                    <ul>
-                      <li class="my-2">
-                        Aliquam purus sit amet luctus venenatis lectus magna fringilla urna. Malesuada bibendum arcu
-                        vitae elementum curabitur vitae
-                        nunc sed. Urna porttitor rhoncus dolor purus non enim praesent elementum facilisis.
-                      </li>
-
-                      <li class="my-2">
-                        Proin libero nunc consequat interdum varius. Amet luctus venenatis lectus magna fringillal urna
-                        porttitor. Enim tortor at auctor
-                        urna nunc id cursus.
-                      </li>
-
-                      <li class="my-2">
-                        Volutpat maecenas volutpat blandit aliquam. Adipiscing enim eu turpis egestas pretium aenean
-                        pharetra magna Morbi leo
-                        urna molestie at elementum eu.
-                      </li>
-                    </ul>
-
-                    <p>
-                      Venenatis a condimentum vitae sapien pellentesque habitant morbi tristique senectus. Semper auctor
-                      neque vitae tempus. Magnis dis
-                      parturient montes nascetur ridiculus mus. A condimentum vitae sapien pellentesque habitant morbi
-                      tristique. Duis ut diam quam nulla
-                      porttitor.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="d-flex align-center justify-space-between mt-8">
-                  <div>
-                    <v-row>
-                      <v-col class="flex-shrink-0" cols="auto">
-                        <v-chip class="tag-color">#Animalis</v-chip>
-                      </v-col>
-
-                      <v-col class="flex-shrink-0" cols="auto">
-                        <v-chip class="tag-color">#Travel</v-chip>
-                      </v-col>
-
-                      <v-col class="flex-shrink-0" cols="auto">
-                        <v-chip class="tag-color">#Birds</v-chip>
-                      </v-col>
-                    </v-row>
-                  </div>
-
-                  <div class="text-h5">
-                    Share >
-                    <v-btn icon large>
-                      <v-icon large color="primary">mdi-facebook</v-icon>
-                    </v-btn>
-
-                    <v-btn icon large>
-                      <v-icon large color="primary">mdi-twitter</v-icon>
-                    </v-btn>
-
-                    <v-btn icon large>
-                      <v-icon large color="primary">mdi-linkedin</v-icon>
-                    </v-btn>
-
-                    <v-btn icon large>
-                      <v-icon large color="primary">mdi-instagram</v-icon>
-                    </v-btn>
-                  </div>
-                </div>
-
-                <v-divider class="my-8"></v-divider>
-
-                <div>
-                  <v-row justify="space-between">
-                    <v-col cols="12" md="6" lg="4">
-                      <div class="d-flex align-center">
-                        <div>
-                          <v-icon>mdi-arrow-left</v-icon>
-                        </div>
-
-                        <div class="text-h6 primary--text pl-2">
-                          <div class="text-subtitle-1">Previous Post</div>Photos of Jeep models that will change
-                          your mood
-                        </div>
-                      </div>
-                    </v-col>
-
-                    <v-col cols="12" md="6" lg="4">
-                      <div class="d-flex align-center text-right">
-                        <div class="text-h6 primary--text pr-2">
-                          <div class="text-subtitle-1">Next Post</div>What do I need to know to start learning
-                          JavaScript?
-                        </div>
-
-                        <div>
-                          <v-icon>mdi-arrow-right</v-icon>
-                        </div>
-                      </div>
-                    </v-col>
-                  </v-row>
                 </div>
               </v-card-text>
             </v-card>
@@ -200,14 +45,26 @@
 </template>
 
 <style>
-  .tag-color {
-    background-color: #000000 !important;
-    color: #fcdc03 !important;
-  }
 </style>
 
 <script>
+import axios from "axios"
+
 export default {
-  name: "Article"
+  name: "Article",
+  data() {
+    return {
+      article: {
+        title: '',
+        createdAt: '',
+        body: '',
+      }
+    }
+  },
+  async created() {
+    const title = this.$route.params.title;
+    const response = await axios.get("blog/articles/" + title);
+    this.article = response.data[0];
+  },
 };
 </script>
