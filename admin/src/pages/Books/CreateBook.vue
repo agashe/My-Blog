@@ -31,6 +31,18 @@
 
     <div class="row">
       <div class="col-md-12 pl-pr-md-1">
+        <base-input
+          label="Link"
+          type="text"
+          placeholder="Link"
+          v-model="link"
+        >
+        </base-input>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 pl-pr-md-1">
         <div class="form-group">
           <label for="cover" class="control-label">Cover</label>
           <input
@@ -55,6 +67,7 @@ export default {
     return {
       title: null,
       description: null,
+      link: null,
       cover: null,
     };
   },
@@ -70,6 +83,7 @@ export default {
         const formData = new FormData();
         formData.append("title", this.title);
         formData.append("description", this.description);
+        formData.append("link", this.link);
         formData.append("cover", this.cover);
 
         const response = await axios.post("books", formData, {
