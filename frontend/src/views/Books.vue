@@ -10,7 +10,7 @@
                   <v-card class="my-3 pa-2" to="/article">
                     <v-row>
                       <v-col cols="12" md="4">
-                        <v-img src="https://cdn.pixabay.com/photo/2016/11/14/04/45/elephant-1822636_1280.jpg"
+                        <v-img :src="`http://localhost:3000/books/${book.cover}`"
                           :aspect-ratio="16 / 9" class="elevation-2"></v-img>
                       </v-col>
                       <v-col>
@@ -26,12 +26,13 @@
                       </v-col>
                       <v-col>
                         <div class="d-flex align-center">
-                          <v-btn block>
+                          <a :href="book.link" target="_blank" 
+                            class="v-btn v-btn--block v-btn--is-elevated v-btn--has-bg theme--light v-size--default">
                             Download
                             <v-icon right dark>
                               mdi-download
                             </v-icon>
-                          </v-btn>
+                          </a>
                         </div>
                       </v-col>
                     </v-row>

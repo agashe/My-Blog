@@ -5,7 +5,7 @@
         <div>
           <div>
             <v-card flat color="transparent">
-              <v-img src="https://cdn.pixabay.com/photo/2020/02/07/20/32/cyprus-4828328_1280.jpg" :aspect-ratio="16 / 9"
+              <v-img :src="`http://localhost:3000/articles/${article.cover}`" :aspect-ratio="16 / 9"
                 gradient="to top, rgba(25,32,72,.4), rgba(25,32,72,.0)" style="border-radius: 16px"></v-img>
 
               <v-card-text>
@@ -30,11 +30,7 @@
 
                 <v-divider class="my-4"></v-divider>
 
-                <div>
-                  <p class="text-subtitle-1 primary--text font-weight-medium">
-                    {{ article.body }}
-                  </p>
-                </div>
+                <div v-html="article.body"></div>
               </v-card-text>
             </v-card>
           </div>

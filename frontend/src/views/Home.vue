@@ -10,9 +10,9 @@
                   <v-row class="cursor-pointer" @click="redirectToArticle(article.title.replace(/ /g, '_'))">
                     <v-col cols="12" md="4">
                       <v-card flat height="100%">
-                        <!-- <v-img
-                          :src="`http://localhost:3000/uploads/articles/${article.cover}`"
-                          :aspect-ratio="16 / 9" height="100%"></v-img> -->
+                        <v-img
+                          :src="`http://localhost:3000/articles/${article.cover}`"
+                          :aspect-ratio="16 / 9" height="100%"></v-img>
                       </v-card>
                     </v-col>
 
